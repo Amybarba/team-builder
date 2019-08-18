@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import teamInfo from './teamInfo';
+import TeamInfo from "./components/TeamInfo";
+import Form from "./components/Form";
+import data  from "./data";
+
 
 function App() {
-  const [teamMember, setTeamMember] = useState(teamInfo);
+  const [teamMember, setTeamMember] = useState(data);
 
-  const newTeamMember = member  => {
-               setTeamMember([...teamMember,  member]);
+  const addTeamMember = member => {
+    console.log(member);
+     setTeamMember([...teamMember,  member]);
   };
   
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Team Amy</h1>
-       {/* Ad in format information from component */}
-      </header>
+      <Form addTeamMember={addTeamMember} />
+    <TeamInfo memberList={teamMember} />
     </div>
   );
 }
